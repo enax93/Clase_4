@@ -1,0 +1,135 @@
+# Clase 4 18/12/23
+
+# Funciones 
+
+'''
+Funciones desarrolladas por nosotros:
+
+- Utilizar la palabra clave def
+- Abrir y cerrar parentesis
+- Si hay mas de un argumento hay que ponerlos dentro del parentesis
+- Poner dos puntos
+- Las intrucciones que formen parte de la funcion debern ir identadas
+- Si se desea que la funcion retorne algun valor hay que utilizar la instruccion return al final de la funcion
+
+Ejemplo
+def suma(a,b):
+    return a+b
+print(suma(5,13))
+
+'''
+
+'''
+Ejercicio propuesto:
+
+Desarrollar una funcion que reciba como parametros de entrada dos palabras y que devuelva un mensaje por pantalla indicando cual de elas tiene un mayor numero de caracteres
+
+
+
+def contar_caracteres_palabras(palabra1, palabra2):
+    if len(palabra1) > len(palabra2):
+        print("La palabra" ,palabra1, "tiene" ,len(palabra1), "caracteres, teniendo mayor numero de caracteres que", palabra2, "la cual tiene", len(palabra2), "caracteres")
+    elif len(palabra2) > len(palabra1):
+        print("La palabra" ,palabra2, "tiene" ,len(palabra2), "caracteres, teniendo mayor numero de caracteres que", palabra1, "la cual tiene", len(palabra1), "caracteres")
+    else:
+        print("Ambas palabras tienen" ,len(palabra1),"caracteres")
+
+print("Se van a comparar las longitudes de dos palabras que introduzcas")
+
+palabra1 = input("Por favor introduzca la primera palabra: ")
+
+palabra2 = input("Por favor introduzca la segunda palabra: ")
+
+contar_caracteres_palabras(palabra1, palabra2)
+'''
+
+# Recursividad
+
+''' Ejemplo
+def suma_lista(lista):
+    if len(lista) == 0: # Caso base: lista vacia, retorna 0
+        return 0
+
+    else:
+        return lista[0] + suma_lista(lista[1:]) # Llamada recursiva: primer elemento + suma del resto
+# Ejemplo de uso
+numeros = [1, 2, 3, 4, 5]
+print(suma_lista(numeros)) #imprimira la suma de los elementos: 15
+'''
+
+'''
+# Ejemplo
+
+# un numero factorial: 5! = 5x4x3x2x1
+
+def factorial(n):
+    if n == 0: # Caso base: el factorial de 0 es 1
+        return 1
+    else:
+        return n * factorial(n - 1) # llamada recursiva: n * factorial{n-1}
+
+# ejemplo de uso
+print(factorial(5)) # imprime  el factorial de 5 = 120
+'''
+
+''' Torre de Hanoi
+def hanoi(n, source, destination, auxiliary):
+    if n == 1:
+        print("Mover disco 1 de", source, "a", destination)
+        return 1
+    count1 = hanoi(n - 1, source, auxiliary, destination)
+    print("Mover disco", n, "de", source, "a", destination)
+    count2 = 1
+    count3 = hanoi(n - 1, auxiliary, destination, source)
+
+    return count1 + count2 + count3
+
+def count_hanoi(n, source, destination, auxiliary):
+    print("Movimientos de torre:")
+    total_moves = hanoi(n, source, destination, auxiliary)
+    print("Total de movimientos:", total_moves)
+
+n = 5
+count_hanoi(n, "A", "B", "C")
+
+'''
+
+'''
+Ejercicio propuesto:
+
+Definir una funcion recursiva que reciba como parametro una lista y devuelva el numero de elementos. Es decir, cuente el total de elementos en la lista
+
+
+
+def cuenta_elementos(lista):
+    if len(lista) == 0: # caso base
+        return 0
+    else:
+        return 1 + cuenta_elementos(lista[1:]) # llamada recursiva
+    
+numeros = [1, 2, 3, 4]
+print(cuenta_elementos(numeros)) 
+
+'''
+
+
+def contar_letras(palabra):
+    if len(palabra) == 0: # caso base
+        return 0
+    else:
+        return 1 + contar_letras(palabra[1:]) # llamada recursiva
+    
+palabra = "abecedario"
+print(contar_letras(palabra))
+
+
+def eliminar_letras(palabra):
+    if len(palabra) == 0:  # caso base
+        return ""
+    else:
+        print(palabra)  
+        return palabra[0] + eliminar_letras(palabra[1:])  # llamada recursiva
+
+palabra = "palabra"
+eliminar_letras(palabra)
+
